@@ -1,0 +1,42 @@
+{
+    "seed": 2025,
+    "save_dir": "save_model/",
+    "train_data_loader": {
+        "name": "rss2018",
+        "data_root": "datasets",
+        "w": 432,
+        "h": 240,
+        "num_local_frames": 5,
+        "num_ref_frames": 2
+    },
+    "losses": {
+        "hole_weight": 1,
+        "valid_weight": 1,
+        "flow_weight": 1,
+        "mono_weight": 0.01,
+        "adversarial_weight": 0.01,
+        "GAN_LOSS": "hinge"
+    },
+    "model": {
+        "net": "ssifnet",
+        "no_dis": 0
+    },
+    "trainer": {
+        "type": "Adam",
+        "beta1": 0,
+        "beta2": 0.99,
+        "lr": 1e-4,
+        "batch_size": 1,
+        "num_workers": 0,
+        "log_freq": 100,
+        "save_freq": 1e4,
+        "iterations": 50e4,
+        "scheduler": {
+            "type": "MultiStepLR",
+            "milestones": [
+                40e4
+            ],
+            "gamma": 0.1
+        }
+    }
+}
